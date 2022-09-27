@@ -1,0 +1,13 @@
+/* html selectors */
+img {
+    max-height: 50px;
+}
+
+/*class selectors*/
+.heading {
+    font-size: 15pt;
+}
+
+.margin-top {
+    margin-top: 10px;
+}
