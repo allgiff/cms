@@ -4,5 +4,5 @@ export class Message {
         public subject: string,
         public msgText: string,
         public sender: string
-    ){}
+    ){ }
 }
