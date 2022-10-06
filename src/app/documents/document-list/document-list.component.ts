@@ -12,7 +12,9 @@ export class DocumentListComponent implements OnInit {
 
   documents: Document[] = [
     new Document('1', 'Document 1', 'Description 1','https://www.fakeurl1', null),
-    new Document('2', 'Document 2', 'Description 2','https://www.fakeurl2', null)
+    new Document('2', 'Document 2', 'Description 2','https://www.fakeurl2', null),
+    new Document('3', 'Document 3', 'Description 3','https://www.fakeurl3', null),
+    new Document('4', 'Document 4', 'Description 4','https://www.fakeurl4', null)
   ];
 
   constructor() { }
