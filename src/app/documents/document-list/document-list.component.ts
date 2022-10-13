@@ -8,16 +8,16 @@ import { DocumentsService } from '../documents.service';
   styleUrls: ['./document-list.component.css']
 })
 export class DocumentListComponent implements OnInit {
-  contacts: Document[] = [];
+  documents: Document[] = [];
 
   constructor(private documentsService: DocumentsService) { }
 
   ngOnInit() {
-    this.contacts = this.documentsService.getDocuments();
+    this.documents = this.documentsService.getDocuments();
   }
 
   onSelected(document: Document) {
-   
+   this.documentsService.documentSelectedEvent.emit(document);
   }
 
 }

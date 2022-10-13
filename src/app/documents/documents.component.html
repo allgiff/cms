@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-5">
-            <cms-document-list (selectedDocumentEvent)="selectedDocument = $event"></cms-document-list>
+            <cms-document-list></cms-document-list>
         </div>
         <div class="col-md-7">
             <cms-document-detail [document]="selectedDocument" *ngIf="selectedDocument"></cms-document-detail>

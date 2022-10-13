@@ -123,7 +123,7 @@ export const MOCKCONTACTS: Contact[] = [
   // teams
   // index 13
   {
-    id: '4', name: 'Network/OS team', email: ' ', phone: ' ', imageUrl: ' ', group: [
+    id: '4', name: 'Network/OS team', email: ' ', phone: ' ', imageUrl: '', group: [
     {
       id: '2',
       name: 'Bradley Armstrong',
@@ -153,7 +153,7 @@ export const MOCKCONTACTS: Contact[] = [
 
   // index 14
   {
-    id: '6', name: 'Software Development team', email: ' ', phone: ' ', imageUrl: ' ', group: [
+    id: '6', name: 'Software Development team', email: ' ', phone: ' ', imageUrl: '', group: [
     {
       id: '1',
       name: 'Rex Barzee',
@@ -191,7 +191,7 @@ export const MOCKCONTACTS: Contact[] = [
 
   // index 15
   {
-    id: '10', name: 'Web Development team', email: ' ', phone: ' ', imageUrl: ' ', group: [
+    id: '10', name: 'Web Development team', email: ' ', phone: ' ', imageUrl: '', group: [
     {
       id: '15',
       name: 'Blaine Robertson',
@@ -221,7 +221,7 @@ export const MOCKCONTACTS: Contact[] = [
 
   // index 16
   {
-    id: '14', name: 'Database team', email: ' ', phone: ' ', imageUrl: ' ', group: [
+    id: '14', name: 'Database team', email: ' ', phone: ' ', imageUrl: '', group: [
     {
       id: '7',
       name: 'R. Kent Jackson',
@@ -251,7 +251,7 @@ export const MOCKCONTACTS: Contact[] = [
 
   // index 17
   {
-    id: '18', name: 'Computer Security team', email: ' ', phone: ' ', imageUrl: ' ', group: [
+    id: '18', name: 'Computer Security team', email: ' ', phone: ' ', imageUrl: '', group: [
     {
       id: '5',
       name: 'Kory Godfrey',
