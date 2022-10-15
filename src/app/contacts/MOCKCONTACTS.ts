@@ -119,6 +119,14 @@ export const MOCKCONTACTS: Contact[] = [
     imageUrl: '../../assets/images/thompsonda.jpg',
     group: null
   },
+  {
+    id: '99',
+    name: 'Allie Gifford',
+    email: 'gif19002@byui.edu',
+    phone: '123-496-7890',
+    imageUrl: '../../assets/images/Allie.jpg',
+    group: null
+  },
 
   // teams
   // index 13
