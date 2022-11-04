@@ -10,6 +10,7 @@ import { ContactService } from '../contact.service';
   styleUrls: ['./contact-edit.component.css']
 })
 export class ContactEditComponent implements OnInit {
+
   originalContact: Contact;
   contact: Contact;
   groupContacts: Contact[] = [];
@@ -75,22 +76,6 @@ export class ContactEditComponent implements OnInit {
 
   onCancel() {
     this.router.navigate(['/contacts']);
-  }
-
-  isInvalidContact(newContact: Contact) {
-    if (!newContact) {
-      return true;
-    }
-
-    if (this.contact && newContact.id === this.contact.id) {
-      return true;
-    }
-
-    for (let i = 0; i < this.groupContacts.length; i++) {
-      if (newContact.id === this.groupContacts[i].id) {
-        return true;
-      }
-    }
   }
 
 }
