@@ -39,7 +39,7 @@ import { DndModule } from 'ng2-dnd';
     MessageEditComponent,
     DropdownDirective,
     DocumentEditComponent,
-    ContactEditComponent,
+    ContactEditComponent
   ],
   imports: [
     BrowserModule,

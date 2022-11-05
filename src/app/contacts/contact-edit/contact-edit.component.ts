@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Contact } from '../contact.model';
@@ -45,6 +45,15 @@ export class ContactEditComponent implements OnInit {
     });
   }
 
+  addToGroup($event: any) {
+    const selectedContact: Contact = $event.dragData;
+    const invalidGroupContact = this.isInvalidContact(selectedContact);
+    if (invalidGroupContact){
+       return;
+    }
+    this.groupContacts.push(selectedContact);
+  }
+
   onRemoveItem(index: number) {
     if (index < 0 || index >= this.groupContacts.length) {
       return;
@@ -54,7 +63,7 @@ export class ContactEditComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    const value =form.value;
+    const value = form.value;
     const newContact = new Contact(
       '',
       value.name,
@@ -94,16 +103,6 @@ export class ContactEditComponent implements OnInit {
     }
     return false;
   }
-
-
-addToGroup($event: any) {
-  const selectedContact: Contact = $event.dragData;
-  const invalidGroupContact = this.isInvalidContact(selectedContact);
-  if (invalidGroupContact){
-     return;
-  }
-  this.groupContacts.push(selectedContact);
-}
 
 
 }
