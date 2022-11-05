@@ -105,12 +105,12 @@ addToGroup($event: any) {
   this.groupContacts.push(selectedContact);
 }
 
-
 onRemoveItem(index: number) {
   if (index < 0 || index >= this.groupContacts.length) {
      return;
   }
   this.groupContacts.splice(index, 1);
 }
+
 
 }
