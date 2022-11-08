@@ -28,23 +28,21 @@ export class ContactEditComponent implements OnInit {
         return;
       }
 
-      this.contactService.getContact(this.id)
-        .subscribe(contactData => {
-          this.originalContact = contactData.contact;
+      this.originalContact = this.contactService.getContact(this.id);
 
-          if (!this.originalContact) {
-            return;
-          }
+      if (!this.originalContact) {
+        return;
+      }
 
-          this.editMode = true;
-          this.contact = JSON.parse(JSON.stringify(this.originalContact));
+      this.editMode = true;
+      this.contact = JSON.parse(JSON.stringify(this.originalContact));
 
-          if (this.originalContact.group && this.originalContact.group.length > 0) {
-            this.groupContacts = JSON.parse(
-              JSON.stringify(this.originalContact.group)
-            )
-          }
-      }); 
+
+      if (this.originalContact.group && this.originalContact.group.length > 0) {
+        this.groupContacts = JSON.parse(
+          JSON.stringify(this.originalContact.group)
+        );
+      }
     });
   }
 

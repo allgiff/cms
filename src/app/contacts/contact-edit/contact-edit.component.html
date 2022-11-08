@@ -11,7 +11,7 @@
               size="120"
               max="120"
               name="name"
-              [ngModel]=(contact?.name)
+              [ngModel]="contact?.name"
               #name="ngModel"
               required>
           </div>
@@ -27,7 +27,7 @@
               size="120"
               max="255"
               name="email"
-              [ngModel]=(contact?.email)
+              [ngModel]="contact?.email"
               #email="ngModel"
               required
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
@@ -51,7 +51,7 @@
               size="150"
               max="255"
               name="phone"
-              [ngModel]=(contact?.phone)
+              [ngModel]="contact?.phone"
               #phone="ngModel"
               pattern="\D*([2-9]\d{2})(\D*)([2-9]\d{2})(\D*)(\d{4})\D*">
           </div>
@@ -74,7 +74,7 @@
               size="150"
               max="255"
               name="imageUrl"
-              [ngModel]=(contact?.imageUrl)>
+              [ngModel]="contact?.imageUrl">
           </div>
         </div>
   
