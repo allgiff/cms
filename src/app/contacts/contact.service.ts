@@ -73,7 +73,7 @@ export class ContactService {
 
     const pos = this.contacts.indexOf(originalContact);
 
-    if (pos > 0) {
+    if (pos < 0) {
       return;
     }
 
