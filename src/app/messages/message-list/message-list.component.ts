@@ -19,7 +19,7 @@ export class MessageListComponent implements OnInit {
       }
     );
 
-    this.messages = this.messageService.getMessages();
+    this.messageService.getMessages();
   }
 
 }
