@@ -96,7 +96,7 @@ export class DocumentsService {
 
     const pos = this.documents.indexOf(originalDocument);
 
-    if (pos > 0) {
+    if (pos < 0) {
       return;
     }
 
