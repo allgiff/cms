@@ -11,3 +11,8 @@ img {
 .margin-top {
     margin-top: 10px;
 }
+
+.pad-left-right {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}

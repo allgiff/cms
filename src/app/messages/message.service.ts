@@ -12,10 +12,7 @@ export class MessageService {
   messageListChangedEvent = new Subject<Message[]>();
   maxMessageID: number;
 
-  messageChangedEvent = new EventEmitter<Message[]>();
-
   constructor(private http: HttpClient) {
-    this.messages = MOCKMESSAGES;
     this.maxMessageID = this.getMaxId();
    }
 
@@ -24,11 +21,11 @@ export class MessageService {
    }
 
    getMessages() {
-    this.http.get<Message[]>('https://wdd-430-cms-7002e-default-rtdb.firebaseio.com/messages.json').subscribe(
+    this.http.get("https://wdd-430-cms-7002e-default-rtdb.firebaseio.com/messages.json").subscribe(
       (messages: Message[] ) => {
         this.messages = messages;
         this.maxMessageID = this.getMaxId();
-        this.messages.sort((a, b) => a.id > b.id ? 1 : b.id > a.id ? -1 : 0)
+        this.messages.sort((a, b) => a.id > b.id ? 1 : b.id > a.id ? -1 : 0);
         this.messageListChangedEvent.next(this.messages.slice());
       });
   
