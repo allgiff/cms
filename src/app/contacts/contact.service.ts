@@ -1,6 +1,5 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Contact } from './contact.model';
-import { MOCKCONTACTS } from './MOCKCONTACTS';
 import { Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -13,7 +12,6 @@ export class ContactService {
   maxContactID: number;
 
   constructor(private http: HttpClient) {
-    this.contacts = MOCKCONTACTS;
     this.maxContactID = this.getMaxId();
    }
 
