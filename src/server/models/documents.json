@@ -1,6 +1,6 @@
-db.documents.insertMany(
+
 [{
-        "_id": ObjectId("58cb2ab6a187c5aa1124e30f"),
+
         "id": "1",
         "name": "CIT 425 - Data Warehousing",
         "url": "https://rkjdatawarehousing.wordpress.com/",
@@ -39,7 +39,7 @@ db.documents.insertMany(
         }]
     },
     {
-        "_id": ObjectId("58cb2ab6a187c5aa1124e310"),
+
         "id": "10",
         "name": "CIT 460 - Enterprise Development",
         "url": "https://rkjackson.wordpress.com/",
@@ -80,7 +80,7 @@ db.documents.insertMany(
         "description": null
     },
     {
-        "_id": ObjectId("58cb2ab6a187c5aa1124e311"),
+
         "id": "20",
         "name": "CIT 366 - Full Web Stack Development",
         "url": "https://content.byui.edu/file/b7c3e5ed-6947-497f-9d32-4e5b6b397cac/1/CIT 366 course description.pdf",
@@ -107,57 +107,57 @@ db.documents.insertMany(
         }]
     },
     {
-        "_id": ObjectId("58cb2ab6a187c5aa1124e312"),
+
         "id": "40",
         "name": "CIT 366 - Full Web Stack Development",
         "url": "https://content.byui.edu/file/b7c3e5ed-6947-497f-9d32-4e5b6b397cac/1/CIT 366 course description.pdf"
     },
     {
-        "_id": ObjectId("58cb2ab6a187c5aa1124e313"),
+
         "id": "41",
         "name": "CIT 240 - Introduction to Networking",
         "url": "https://www.byui.edu/computer-information-technology/courses"
     },
     {
-        "_id": ObjectId("58cb2ab6a187c5aa1124e314"),
+
         "id": "42",
         "name": "CIT 370 - Computer Security I",
         "url": "https://www.byui.edu/computer-information-technology/courses"
     },
     {
-        "_id": ObjectId("58cb2ab6a187c5aa1124e315"),
+
         "id": "43",
         "name": "CIT 360 - Object Oriented Programming II",
         "url": "https://www.byui.edu/computer-information-technology/courses"
     },
     {
-        "_id": ObjectId("58cb2ab6a187c5aa1124e316"),
+
         "id": "44",
         "name": "CIT 470 - Computer Security II",
         "url": "https://www.byui.edu/computer-information-technology/courses"
     },
     {
-        "_id": ObjectId("58cb2ab6a187c5aa1124e317"),
+
         "id": "45",
         "name": "CIT 262 - Mobile Development",
         "url": "https://www.byui.edu/computer-information-technology/courses"
     },
     {
-        "_id": ObjectId("58cb2ab6a187c5aa1124e318"),
+
         "id": "46",
         "name": "CIT 230 - Web Page Development",
         "url": "https://www.byui.edu/computer-information-technology/courses"
     },
     {
-        "_id": ObjectId("58cb2ab6a187c5aa1124e319"),
+
         "id": "47",
         "name": "CIT 236 - Web Development",
         "url": "https://www.byui.edu/computer-information-technology/courses"
     },
     {
-        "_id": ObjectId("58cb2ab6a187c5aa1124e31a"),
+
         "id": "48",
         "name": "CIT 340 - Networking II",
         "url": "https://www.byui.edu/computer-information-technology/courses"
     }
-])
+]
