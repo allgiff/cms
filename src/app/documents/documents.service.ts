@@ -17,39 +17,64 @@ export class DocumentsService {
     this.maxDocumentID = this.getMaxId();
   }
 
-  addDocument(newDocument: Document) {
-    if(!newDocument) {
-      return;
-    }
-      this.maxDocumentID++;
-      newDocument.id = this.maxDocumentID.toString();
-      this.documents.push(newDocument);
-
-      this.storeDocuments();
+  sortAndSend() {
+    this.documents.sort((a, b) => a.name > b.name ? 1 : b.name > a.name ? -1 : 0);
+    this.documentListChangedEvent.next(this.documents.slice());
   }
 
-  deleteDocument(document: Document) {
+
+  addDocument(document: Document) {
     if (!document) {
       return;
     }
 
-    const pos = this.documents.indexOf(document);
+    // make sure id of the new Document is empty
+    document.id = '';
 
-    if (pos < 0) {
-      return;
-    }
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
 
-    this.documents.splice(pos, 1);
-
-    this.storeDocuments();
+    // add to database
+    this.http.post<{ message: string, document: Document }>('http://localhost:3000/documents',
+      document,
+      { headers: headers })
+      .subscribe(
+        (responseData) => {
+          // add new document to documents
+          this.documents.push(responseData.document);
+          this.sortAndSend();
+        }
+      );
   }
+
+  
+deleteDocument(document: Document) {
+
+  if (!document) {
+    return;
+  }
+
+  const pos = this.documents.findIndex(d => d.id === document.id);
+
+  if (pos < 0) {
+    return;
+  }
+
+  // delete from database
+  this.http.delete('http://localhost:3000/documents/' + document.id)
+    .subscribe(
+      (response: Response) => {
+        this.documents.splice(pos, 1);
+        this.sortAndSend();
+      }
+    );
+}
 
   getDocument(id: string): Document {
     return this.documents.find((document) => document.id === id);
    }
 
   getDocuments() {
-    this.http.get<Document[]>('https://wdd-430-cms-7002e-default-rtdb.firebaseio.com/documents.json').subscribe(
+    this.http.get<Document[]>('http://localhost:3000/documents').subscribe(
       (documents: Document[] ) => {
         this.documents = documents;
         this.maxDocumentID = this.getMaxId();
@@ -67,7 +92,7 @@ export class DocumentsService {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
 
     this.http
-    .put("https://wdd-430-cms-7002e-default-rtdb.firebaseio.com/documents.json", documents, {
+    .put("http://localhost:3000/documents", documents, {
       headers: headers,
     })
     .subscribe(() => {
@@ -89,21 +114,33 @@ export class DocumentsService {
     return maxId;
   }
 
-  updateDocument(originalDocument: Document, newDocument: Document) {
-    if (!originalDocument || !newDocument) {
-      return;
-    }
-
-    const pos = this.documents.indexOf(originalDocument);
-
-    if (pos < 0) {
-      return;
-    }
-
-    newDocument.id = originalDocument.id;
-    this.documents[pos] = newDocument;
-    
-    this.storeDocuments();
+  
+updateDocument(originalDocument: Document, newDocument: Document) {
+  if (!originalDocument || !newDocument) {
+    return;
   }
+
+  const pos = this.documents.findIndex(d => d.id === originalDocument.id);
+
+  if (pos < 0) {
+    return;
+  }
+
+  // set the id of the new Document to the id of the old Document
+  newDocument.id = originalDocument.id;
+  newDocument._id = originalDocument._id;
+
+  const headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+  // update database
+  this.http.put('http://localhost:3000/documents/' + originalDocument.id,
+    newDocument, { headers: headers })
+    .subscribe(
+      (response: Response) => {
+        this.documents[pos] = newDocument;
+        this.sortAndSend();
+      }
+    );
+}
 
 }
