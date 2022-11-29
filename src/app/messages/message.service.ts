@@ -77,13 +77,16 @@ export class MessageService {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
 
     // add to database
-    this.http.post<{ message: string, messages: Message }>('http://localhost:3000/messages',
+    this.http.post<{ message: string, newMessage: Message }>('http://localhost:3000/messages',
       message,
       { headers: headers })
       .subscribe(
         (responseData) => {
+
+        message._id = responseData.newMessage._id;
+        message.id = responseData.newMessage.id;
           // add new document to documents
-          this.messages.push(responseData.messages);
+          this.messages.push(message);
           this.sortAndSend();
         }
       );
