@@ -74,9 +74,9 @@ deleteDocument(document: Document) {
    }
 
   getDocuments() {
-    this.http.get<Document[]>('http://localhost:3000/documents').subscribe(
-      (documents: Document[] ) => {
-        this.documents = documents;
+    this.http.get<{message: string, documents: Document[]}>('http://localhost:3000/documents').subscribe(
+      (documentData) => {
+        this.documents = documentData.documents;
         this.maxDocumentID = this.getMaxId();
         this.documents.sort((a, b) => a.name > b.name ? 1 : b.name > a.name ? -1 : 0)
         this.documentListChangedEvent.next(this.documents.slice());

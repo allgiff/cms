@@ -44,6 +44,7 @@ export class DocumentEditComponent implements OnInit {
     const value =form.value;
     const newDocument = new Document(
       '',
+      '',
       value.name,
       value.description,
       value.url,

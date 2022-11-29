@@ -27,12 +27,13 @@ router.get('/:id', (req, res, next) => {
     contact.findOne({
         "id": req.params.id
     })
-    .then(contacts => {
+    .populate('group')
+    .then(contact => {
         res
             .status(200)
             .json({
                 message: 'Contact Fetched Successfully',
-                contacts: contacts
+                contact: contact
             });
     })
     .catch(error => {

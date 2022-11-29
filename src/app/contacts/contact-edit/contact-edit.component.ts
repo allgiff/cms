@@ -28,21 +28,23 @@ export class ContactEditComponent implements OnInit {
         return;
       }
 
-      this.originalContact = this.contactService.getContact(this.id);
-
-      if (!this.originalContact) {
-        return;
-      }
-
-      this.editMode = true;
-      this.contact = JSON.parse(JSON.stringify(this.originalContact));
-
-
-      if (this.originalContact.group && this.originalContact.group.length > 0) {
-        this.groupContacts = JSON.parse(
-          JSON.stringify(this.originalContact.group)
-        );
-      }
+      this.contactService.getContact(this.id)
+        .subscribe(contactData => {
+          this.originalContact = contactData.contact;
+          if (!this.originalContact) {
+            return;
+          }
+    
+          this.editMode = true;
+          this.contact = JSON.parse(JSON.stringify(this.originalContact));
+    
+    
+          if (this.originalContact.group && this.originalContact.group.length > 0) {
+            this.groupContacts = JSON.parse(
+              JSON.stringify(this.originalContact.group)
+            );
+          }
+        });
     });
   }
 
@@ -66,6 +68,7 @@ export class ContactEditComponent implements OnInit {
   onSubmit(form: NgForm) {
     const value = form.value;
     const newContact = new Contact(
+      '',
       '',
       value.name,
       value.email,

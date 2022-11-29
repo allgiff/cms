@@ -8,13 +8,13 @@ const contact = require('../models/contact');
 
 router.get('/', (req, res, next) => {
     message.find() 
-    .populate('children')
+    .populate('sender')
     .then(messages => {
         res
             .status(200)
             .json({
                 message: 'Messages Fetched Successfully',
-                contacts: contacts
+                messages: messages
             });
     })
     .catch(error => {
@@ -26,12 +26,13 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    const maxMessageId = sequenceGenerator.nextId("messagess");
+    const maxMessageId = sequenceGenerator.nextId("messages");
   
     const message = new Message({
       id: maxMessageId,
       subject: req.body.subject,
       msgText: req.body.msgText,
+      sender: req.body.sender
     });
   
     message.save()
@@ -54,7 +55,7 @@ router.put('/:id', (req, res, next) => {
     Message.findOne({ id: req.params.id })
       .then(message => {
         message.subject = req.body.subject,
-        document.msgText = req.body.msgText;
+        document.msgText = req.body.msgText
   
         Message.updateOne({ id: req.params.id }, message)
           .then(result => {

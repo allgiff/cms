@@ -1,6 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Message } from './message.model';
-import { MOCKMESSAGES } from './MOCKMESSAGES';
 import { Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -17,7 +16,7 @@ export class MessageService {
    }
 
    sortAndSend() {
-    this.messages.sort((a, b) => a.subject > b.subject ? 1 : b.subject > a.subject ? -1 : 0);
+    //this.messages.sort((a, b) => a.subject > b.subject ? 1 : b.subject > a.subject ? -1 : 0);
     this.messageListChangedEvent.next(this.messages.slice());
   }
 
@@ -26,9 +25,9 @@ export class MessageService {
    }
 
    getMessages() {
-    this.http.get("http://localhost:3000/messages").subscribe(
-      (messages: Message[] ) => {
-        this.messages = messages;
+    this.http.get<{message: string, messages: Message[]}>('http://localhost:3000/messages').subscribe(
+      (messageData) => {
+        this.messages = messageData.messages;
         this.maxMessageID = this.getMaxId();
         this.messages.sort((a, b) => a.id > b.id ? 1 : b.id > a.id ? -1 : 0);
         this.messageListChangedEvent.next(this.messages.slice());
@@ -78,13 +77,13 @@ export class MessageService {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
 
     // add to database
-    this.http.post<{ message: string, message: Message }>('http://localhost:3000/messages',
+    this.http.post<{ message: string, messages: Message }>('http://localhost:3000/messages',
       message,
       { headers: headers })
       .subscribe(
         (responseData) => {
           // add new document to documents
-          this.messages.push(responseData.message);
+          this.messages.push(responseData.messages);
           this.sortAndSend();
         }
       );
