@@ -2,12 +2,12 @@ var express = require('express');
 var router = express.Router();
 const sequenceGenerator = require('./sequenceGenerator');
 
-const message = require('../models/message');
+const Message = require('../models/message');
 const contact = require('../models/contact');
 
 
 router.get('/', (req, res, next) => {
-    message.find() 
+    Message.find() 
     .populate('sender')
     .then(messages => {
         res
@@ -38,8 +38,8 @@ router.post('/', (req, res, next) => {
     message.save()
       .then(createdMessage => {
         res.status(201).json({
-          message: 'Message added successfully',
-          message: createdMessage
+          response: 'Message added successfully',
+          newMessage: createdMessage
         });
       })
       .catch(error => {

@@ -77,7 +77,7 @@ export class MessageService {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
 
     // add to database
-    this.http.post<{ message: string, newMessage: Message }>('http://localhost:3000/messages',
+    this.http.post<{ response: string, newMessage: Message }>('http://localhost:3000/messages',
       message,
       { headers: headers })
       .subscribe(

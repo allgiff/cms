@@ -19,7 +19,7 @@ export class MessageEditComponent implements OnInit {
   constructor(private messageService: MessageService, private contactService: ContactService) { }
 
   ngOnInit() {
-    this.contactService.getContact('17')
+    this.contactService.getContact('101')
       .subscribe(response => {
         this.currentSender = response.contact;
       });
@@ -34,7 +34,8 @@ export class MessageEditComponent implements OnInit {
       '',
       subjectValue,
       msgTextValue,
-      this.currentSender);
+      this.currentSender
+      );
 
       this.messageService.addMessage(newMessage);
 
